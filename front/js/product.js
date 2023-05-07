@@ -19,7 +19,7 @@ fetch("http://localhost:3000/api/products/"+param)
         altTxt = result.altTxt;
         description = result.description;
 
-        document.querySelector(".item__img").innerHTML = `<img src="`+result.imageUrl+`" alt="`+result.altTxt+`">`;
+        document.querySelector(".item__img").innerHTML = `<img src="${result.imageUrl}" alt="${result.altTxt}">`;
         document.getElementById("title").innerHTML = result.name;
         document.getElementById("price").innerHTML = result.price;
         document.getElementById('description').innerHTML = result.description;
@@ -47,7 +47,7 @@ document.getElementById("addToCart").addEventListener("click", () => {
 
     currentCart = JSON.parse(localStorage.getItem("product"));
     console.log(quantity)
-    if (quantity > 0) {
+    if (quantity > 0 && mycolor) {
         if(currentCart) {
             const IsSame = currentCart.find((d) => d.ID == param && d.color == mycolor)
             if (IsSame) {
